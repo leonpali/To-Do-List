@@ -1,0 +1,71 @@
+html,body {
+    font-family: Arial;
+    height: 99%;
+}
+
+.overview-table {
+    border: 1px solid;
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+}
+
+.overview-data {
+    width: 14.3%;
+    vertical-align: top;
+    background-color: #f1f1f1;
+}
+
+.day-table {
+    width: 100%;
+    vertical-align: top;
+    border-collapse: collapse;
+}
+
+.day-table td {
+    vertical-align: top;
+}
+
+.day-table > tr {
+    padding: 0;
+    vertical-align: top;
+}
+
+.task-table {
+    border: 1px solid;
+    width: 100%;
+    height: 70px;
+    box-shadow: 2px 2px lightgrey;
+}
+
+.task-head {
+    display: none;
+}
+
+.task-data {
+    width: 50%;
+}
+
+.task-data-time {
+    width: 50%;
+    text-align: right;
+    vertical-align: top;
+}
+
+.task-data-remaining {
+    width: 50%;
+    text-align: right;
+    vertical-align: bottom;
+}
+
+.empty-field {
+    visibility: hidden;
+}
+
+.add-button {
+    width: 100%;
+    background-color: #1c3de7;
+    border-color: #deeaf2;
+    border-width: 1px;
+    color: white;
+}
