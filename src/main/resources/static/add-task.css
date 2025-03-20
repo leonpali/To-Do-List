@@ -1,0 +1,30 @@
+html,body {
+    font-family: Arial;
+}
+
+#task-name {
+    height: 20px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#task-time {
+    height: 20px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#task-description {
+    height: 50px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+#add-task {
+    width: 250px;
+    height: 30px;
+    background-color: #1c3de7;
+    border-color: #deeaf2;
+    border-width: 1px;
+    color: white;
+}

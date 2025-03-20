@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Tasks</title>
+    <link rel="stylesheet" href="../static/add-task.css">
+</head>
+<body>
+    <form method="post">
+        <label for="task-name">Titel:</label><br>
+        <input type="text" id="task-name" name="task-name" placeholder="Boden wischen"><br>
+        <label for="task-time">Geschätzter Zeitaufwand:</label><br>
+        <input type="text" id="task-time" name="task-time" placeholder="2h 30m"><br>
+        <label for="task-description">Beschreibung:</label><br>
+        <textarea name="task-description" id="task-description" wrap="soft" rows="4" cols="50" placeholder="Boden mit Putzmittel wischen"></textarea><br>
+        <input type="submit" value="Erstellen" id="add-task">
+    </form>
+</body>
+</html>
