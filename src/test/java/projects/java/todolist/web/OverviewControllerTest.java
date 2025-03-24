@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @Import(OverviewController.class)
 @WebMvcTest(OverviewController.class)
@@ -24,5 +24,20 @@ public class OverviewControllerTest {
         mockMvc.perform(get("/overview"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(view().name("overview"));
+    }
+
+    @Test
+    @DisplayName("POST /overview funktioniert")
+    void test_2() throws Exception {
+        mockMvc.perform(post("/overview")
+                        .param("taskName", "Code pushen")
+                        .param("taskTime", "1h 30m")
+                        .param("taskDescription", "Code auf Github pushen"))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(view().name("overview"))
+                .andExpect(model().attribute("taskName", "Code pushen"))
+                .andExpect(model().attribute("taskTime", "1h 30m"))
+                .andExpect(model().attribute("taskDescription", "Code auf Github pushen"));
+
     }
 }
