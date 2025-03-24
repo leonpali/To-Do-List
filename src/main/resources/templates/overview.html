@@ -222,5 +222,33 @@
       </td>
     </tr>
   </table>
+
+  <div id="modal" class="modal">
+  <div class="modal-content">
+    <button id="close-modal" class="close-button">X</button>
+    <iframe id="modal-frame" src="" width="600" height="400"></iframe>
+  </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const openBtns = document.querySelectorAll(".add-button");
+    const closeBtn = document.getElementById("close-modal");
+    const frame = document.getElementById("modal-frame");
+
+    openBtns.forEach(button => {
+      button.addEventListener("click", () => {
+        frame.src = "add-task.html";
+        modal.style.display = "flex";
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+      frame.src = "";
+    });
+  </script>
+
 </body>
+
 </html>
