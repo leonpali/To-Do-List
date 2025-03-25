@@ -1,4 +1,4 @@
-package projects.java.todolist.Domain;
+package projects.java.todolist.domain;
 
 public class TaskTime {
 
