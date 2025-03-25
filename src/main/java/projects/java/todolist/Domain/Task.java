@@ -1,5 +1,6 @@
 package projects.java.todolist.Domain;
 
+
 import java.time.LocalDateTime;
 
 public class Task {
@@ -63,5 +64,25 @@ public class Task {
 
     public void setCompletionDate(CompletionDate completionDate) {
         this.completionDate = completionDate;
+    }
+
+    public LocalDateTime getDate() {
+        return completionDate.getCompletionDate();
+    }
+
+    public String getCompletionDay() {
+        return completionDate.getCompletionDay();
+    }
+
+    public String getTotalTime() {
+        return timeValues.getTotalTime();
+    }
+
+    public String getNeededTime() {
+        return timeValues.getNeededTime();
+    }
+
+    public void setNeededTime(String time) {
+        timeValues.setNeededTime(time);
     }
 }
