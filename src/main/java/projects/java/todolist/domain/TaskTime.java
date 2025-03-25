@@ -10,6 +10,11 @@ public class TaskTime {
         this.neededTime = neededTime;
     }
 
+    public TaskTime(String totalTime) {
+        this.totalTime = totalTime;
+        this.neededTime = "0m";
+    }
+
     public String getTotalTime() {
         return totalTime;
     }
