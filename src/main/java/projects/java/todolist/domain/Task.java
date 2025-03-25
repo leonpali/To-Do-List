@@ -18,6 +18,13 @@ public class Task {
         this.completionDate = completionDate;
     }
 
+    public Task(String name, String totalTime, String description, LocalDateTime completionDate, String completionDay) {
+        this.name = name;
+        this.timeValues = new TaskTime(totalTime);
+        this.description = description;
+        this.completionDate = new CompletionDate(completionDate, completionDay);
+    }
+
     public Task(int id, String name, TaskTime timeValues, String description, CompletionDate completionDate) {
         this.id = id;
         this.name = name;
