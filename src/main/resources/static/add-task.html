@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Tasks</title>
-    <link rel="stylesheet" href="../static/add-task.css">
+    <link rel="stylesheet" href="/css/add-task.css">
 </head>
 <body>
     <form method="post">
@@ -11,6 +11,8 @@
         <input type="text" id="taskName" name="taskName" placeholder="Boden wischen"><br>
         <label for="taskTime">Geschätzter Zeitaufwand:</label><br>
         <input type="text" id="taskTime" name="taskTime" placeholder="2h 30m"><br>
+        <label for="taskDate">Tag:</label><br>
+        <input type="date" id="taskDate" name="taskDay" placeholder=""><br>
         <label for="taskDescription">Beschreibung:</label><br>
         <textarea name="taskDescription" id="taskDescription" wrap="soft" rows="4" cols="50" placeholder="Boden mit Putzmittel wischen"></textarea><br>
         <input type="submit" value="Erstellen" id="add-task">
