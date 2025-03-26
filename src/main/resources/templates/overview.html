@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Overview</title>
-    <link rel="stylesheet" href="../static/overview.css">
+    <link rel="stylesheet" href="/css/overview.css">
 </head>
 <body>
   <table class="overview-table">
@@ -238,7 +238,7 @@
 
     openBtns.forEach(button => {
       button.addEventListener("click", () => {
-        frame.src = "add-task.html";
+        frame.src = "/add-task.html";
         modal.style.display = "flex";
       });
     });

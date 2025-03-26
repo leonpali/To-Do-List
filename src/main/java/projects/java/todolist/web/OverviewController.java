@@ -19,10 +19,12 @@ public class OverviewController {
     @PostMapping
     public String addTask(@RequestParam String taskName,
                           @RequestParam String taskTime,
+                          @RequestParam String taskDate,
                           @RequestParam String taskDescription,
                           Model model) {
         model.addAttribute("taskName", taskName);
         model.addAttribute("taskTime", taskTime);
+        model.addAttribute("taskDate", taskDate);
         model.addAttribute("taskDescription", taskDescription);
         return "overview";
     }
