@@ -10,7 +10,11 @@ import java.time.LocalDate;
 @Service
 public class TaskService {
 
-    public Task createTask(String name, String description, String totalTime, LocalDate completionDate, String completionDay) {
-        return new Task(name, totalTime, description, completionDate, completionDay);
+    public Task createTask(String name, String description, String totalTime, LocalDate completionDate) {
+        return new Task(name, totalTime, description, completionDate, convertDay(completionDate));
+    }
+
+    private String convertDay(LocalDate completionDate) {
+        return completionDate.getDayOfWeek().name();
     }
 }
