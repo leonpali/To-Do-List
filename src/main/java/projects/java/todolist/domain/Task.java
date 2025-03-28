@@ -1,7 +1,7 @@
 package projects.java.todolist.domain;
 
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Task {
 
@@ -18,7 +18,7 @@ public class Task {
         this.completionDate = completionDate;
     }
 
-    public Task(String name, String totalTime, String description, LocalDateTime completionDate, String completionDay) {
+    public Task(String name, String totalTime, String description, LocalDate completionDate, String completionDay) {
         this.name = name;
         this.timeValues = new TaskTime(totalTime);
         this.description = description;
@@ -73,7 +73,7 @@ public class Task {
         this.completionDate = completionDate;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return completionDate.getCompletionDate();
     }
 

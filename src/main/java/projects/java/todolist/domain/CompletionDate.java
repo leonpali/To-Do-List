@@ -1,19 +1,19 @@
 package projects.java.todolist.domain;
 
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class CompletionDate {
 
-    private LocalDateTime completionDate;
+    private LocalDate completionDate;
     private String completionDay;
 
-    public CompletionDate(LocalDateTime completionDate, String completionDay) {
+    public CompletionDate(LocalDate completionDate, String completionDay) {
         this.completionDate = completionDate;
         this.completionDay = completionDay;
     }
 
-    public LocalDateTime getCompletionDate() {
+    public LocalDate getCompletionDate() {
         return completionDate;
     }
 
@@ -21,7 +21,7 @@ public class CompletionDate {
         return completionDay;
     }
 
-    public void setCompletionDate(LocalDateTime completionDate) {
+    public void setCompletionDate(LocalDate completionDate) {
         this.completionDate = completionDate;
     }
 
