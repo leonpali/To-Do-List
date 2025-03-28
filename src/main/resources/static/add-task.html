@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/add-task.css">
 </head>
 <body>
-    <form method="post" th:action="/overview" id="taskForm" onsubmit="notifyParent()">
+    <form method="post" action="/overview" id="taskForm">
         <label for="taskName">Titel:</label><br>
         <input type="text" id="taskName" name="taskName" placeholder="Boden wischen"><br>
         <label for="taskTime">Geschätzter Zeitaufwand:</label><br>
@@ -20,13 +20,23 @@
 
     <script>
         document.getElementById("taskForm").addEventListener("submit", (e) => {
+            e.preventDefault(); // Prevent default form submission
+
             fetch("/overview", {
                 method: "POST",
                 body: new FormData(e.target),
-            }).then(() => {
-                window.parent.document.getElementById("modal").style.display = "none";
-                window.parent.document.getElementById("modal-frame").src = "";
-            });
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Task creation failed");
+                    }
+                    // Close modal if submission is successful
+                    window.parent.document.getElementById("modal").style.display = "none";
+                    window.parent.document.getElementById("modal-frame").src = "";
+                })
+                .catch(error => {
+                    alert("Error: " + error.message);
+                });
         });
     </script>
 </body>
