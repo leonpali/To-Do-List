@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
+
 @Controller
 @RequestMapping("/overview")
 public class OverviewController {
@@ -19,7 +21,7 @@ public class OverviewController {
     @PostMapping
     public String addTask(@RequestParam String taskName,
                           @RequestParam String taskTime,
-                          @RequestParam String taskDate,
+                          @RequestParam LocalDate taskDate,
                           @RequestParam String taskDescription,
                           Model model) {
         model.addAttribute("taskName", taskName);

@@ -6,16 +6,28 @@
     <link rel="stylesheet" href="/css/add-task.css">
 </head>
 <body>
-    <form method="post">
+    <form method="post" th:action="/overview" id="taskForm" onsubmit="notifyParent()">
         <label for="taskName">Titel:</label><br>
         <input type="text" id="taskName" name="taskName" placeholder="Boden wischen"><br>
         <label for="taskTime">Geschätzter Zeitaufwand:</label><br>
         <input type="text" id="taskTime" name="taskTime" placeholder="2h 30m"><br>
         <label for="taskDate">Tag:</label><br>
-        <input type="date" id="taskDate" name="taskDay" placeholder=""><br>
+        <input type="date" id="taskDate" name="taskDate" placeholder=""><br>
         <label for="taskDescription">Beschreibung:</label><br>
         <textarea name="taskDescription" id="taskDescription" wrap="soft" rows="4" cols="50" placeholder="Boden mit Putzmittel wischen"></textarea><br>
         <input type="submit" value="Erstellen" id="add-task">
     </form>
+
+    <script>
+        document.getElementById("taskForm").addEventListener("submit", (e) => {
+            fetch("/overview", {
+                method: "POST",
+                body: new FormData(e.target),
+            }).then(() => {
+                window.parent.document.getElementById("modal").style.display = "none";
+                window.parent.document.getElementById("modal-frame").src = "";
+            });
+        });
+    </script>
 </body>
 </html>

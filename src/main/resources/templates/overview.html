@@ -247,6 +247,18 @@
       modal.style.display = "none";
       frame.src = "";
     });
+
+    function closeModal() {
+      modal.style.display = "none";
+      frame.src = "";
+      location.reload();
+    }
+
+    window.addEventListener('message', (event) => {
+      if (event.data === 'closeModal') {
+        closeModal();
+      }
+    });
   </script>
 
 </body>
