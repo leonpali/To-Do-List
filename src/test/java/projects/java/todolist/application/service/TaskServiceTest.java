@@ -32,4 +32,13 @@ public class TaskServiceTest {
         Task task = service.createTask("Task 1", "Test Task zum testen","2h", LocalDate.now());
         assertThat(service.getAllTasks()).isNotEmpty();
     }
+
+    @Test
+    @DisplayName("Service gibt eine Map mit den Tasks nach Wochentag sortiert zurück")
+    void test_4() throws Exception {
+        TaskService service = new TaskService();
+        Task task = service.createTask("Task 1", "Test Task zum testen","2h", LocalDate.of(2025, 3, 28));
+        Task task2 = service.createTask("Task 1", "Test Task zum testen","2h", LocalDate.of(2025, 3, 28));
+        assertThat(service.getTasksByDay().get("friday")).isNotEmpty();
+    }
 }
