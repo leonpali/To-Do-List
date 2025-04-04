@@ -24,4 +24,12 @@ public class TaskServiceTest {
         Task task = service.createTask("Task 1", "Test Task zum testen","2h", LocalDate.of(2025, 3, 28));
         assertThat(task.getCompletionDay()).isEqualToIgnoringCase("Friday");
     }
+
+    @Test
+    @DisplayName("Neu erstellte Tasks können in Liste gefunden werden")
+    void test_3() throws Exception {
+        TaskService service = new TaskService();
+        Task task = service.createTask("Task 1", "Test Task zum testen","2h", LocalDate.now());
+        assertThat(service.getAllTasks()).isNotEmpty();
+    }
 }
