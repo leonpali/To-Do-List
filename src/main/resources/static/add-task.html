@@ -33,6 +33,7 @@
                     // Close modal if submission is successful
                     window.parent.document.getElementById("modal").style.display = "none";
                     window.parent.document.getElementById("modal-frame").src = "";
+                    window.parent.location.reload();
                 })
                 .catch(error => {
                     alert("Error: " + error.message);
