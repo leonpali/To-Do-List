@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import projects.java.todolist.application.service.TaskService;
 
 import java.time.LocalDate;
 
@@ -13,8 +14,15 @@ import java.time.LocalDate;
 @RequestMapping("/overview")
 public class OverviewController {
 
+    private TaskService service;
+
+    public OverviewController(TaskService service) {
+        this.service = service;
+    }
+
     @GetMapping
-    public String overview() {
+    public String overview(Model model) {
+        model.addAttribute("tasksByDay", service.getTasksByDay());
         return "overview";
     }
 
@@ -24,10 +32,8 @@ public class OverviewController {
                           @RequestParam LocalDate taskDate,
                           @RequestParam String taskDescription,
                           Model model) {
-        model.addAttribute("taskName", taskName);
-        model.addAttribute("taskTime", taskTime);
-        model.addAttribute("taskDate", taskDate);
-        model.addAttribute("taskDescription", taskDescription);
+        service.createTask(taskName, taskDescription,taskTime,taskDate);
+        model.addAttribute("tasksByDay", service.getTasksByDay());
         return "overview";
     }
 }

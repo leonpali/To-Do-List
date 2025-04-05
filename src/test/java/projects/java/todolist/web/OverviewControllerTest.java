@@ -6,27 +6,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
+import projects.java.todolist.application.service.TaskService;
 import projects.java.todolist.config.WebSecurityConfiguration;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@Import({OverviewController.class, WebSecurityConfiguration.class})
+@Import({OverviewController.class, WebSecurityConfiguration.class, TaskService.class})
 @WebMvcTest(OverviewController.class)
 public class OverviewControllerTest {
 
     @Autowired
     MockMvc mockMvc;
 
+    @Autowired
+    TaskService service;
+
     @Test
     @DisplayName("Wenn man /overvíew aufruft gelangt man auf die Overview Seite")
     void test_1() throws Exception {
         mockMvc.perform(get("/overview"))
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(view().name("overview"));
+                .andExpect(view().name("overview"))
+                .andExpect(model().attribute("tasksByDay", service.getTasksByDay()));
     }
 
     @Test
@@ -39,9 +45,7 @@ public class OverviewControllerTest {
                         .param("taskDescription", "Code auf Github pushen"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(view().name("overview"))
-                .andExpect(model().attribute("taskName", "Code pushen"))
-                .andExpect(model().attribute("taskTime", "1h 30m"))
-                .andExpect(model().attribute("taskDescription", "Code auf Github pushen"));
+                .andExpect(model().attribute("tasksByDay", service.getTasksByDay()));
 
     }
 }

@@ -18,7 +18,7 @@
     </tr>
     <tr>
       <td class="overview-data">
-        <table class="day-table">
+        <table class="day-table" id="week">
           <tr>
             <td>
               <table class="task-table">
@@ -56,6 +56,25 @@
               </table>
             </td>
           </tr>
+          <tr th:each="task : ${tasksByDay.get('week')}">
+            <td>
+              <table class="task-table">
+                <tr>
+                  <th class="task-head">Beschreibung</th>
+                  <th class="task-head">Zeit</th>
+                  <th class="task-head">Verbleibend</th>
+                </tr>
+                <tr>
+                  <td class="task-data" th:text="${task.getName()}">Task</td>
+                  <td class="task-data-time" th:text="${task.getTotalTime()}">2h</td>
+                </tr>
+                <tr>
+                  <td class="empty-field"></td>
+                  <td class="task-data-remaining">0h</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
           <tr>
             <td>
               <button type="button" class="add-button">+</button>
@@ -64,7 +83,7 @@
         </table>
       </td>
       <td class="overview-data">
-        <table class="day-table">
+        <table class="day-table" id="monday">
           <tr>
             <td>
               <table class="task-table">
@@ -83,6 +102,25 @@
               </table>
             </td>
           </tr>
+          <tr th:each="task : ${tasksByDay.get('monday')}">
+            <td>
+              <table class="task-table">
+                <tr>
+                  <th class="task-head">Beschreibung</th>
+                  <th class="task-head">Zeit</th>
+                  <th class="task-head">Verbleibend</th>
+                </tr>
+                <tr>
+                  <td class="task-data" th:text="${task.getName()}">Task</td>
+                  <td class="task-data-time" th:text="${task.getTotalTime()}">2h</td>
+                </tr>
+                <tr>
+                  <td class="empty-field"></td>
+                  <td class="task-data-remaining">0h</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
           <tr>
             <td>
               <button type="button" class="add-button">+</button>
@@ -91,7 +129,7 @@
         </table>
       </td>
       <td class="overview-data">
-        <table class="day-table">
+        <table class="day-table" id="tuesday">
           <tr>
             <td>
               <table class="task-table">
@@ -110,6 +148,25 @@
               </table>
             </td>
           </tr>
+          <tr th:each="task : ${tasksByDay.get('tuesday')}">
+            <td>
+              <table class="task-table">
+                <tr>
+                  <th class="task-head">Beschreibung</th>
+                  <th class="task-head">Zeit</th>
+                  <th class="task-head">Verbleibend</th>
+                </tr>
+                <tr>
+                  <td class="task-data" th:text="${task.getName()}">Task</td>
+                  <td class="task-data-time" th:text="${task.getTotalTime()}">2h</td>
+                </tr>
+                <tr>
+                  <td class="empty-field"></td>
+                  <td class="task-data-remaining">0h</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
           <tr>
             <td>
               <button type="button" class="add-button">+</button>
@@ -118,7 +175,7 @@
         </table>
       </td>
       <td class="overview-data">
-        <table class="day-table">
+        <table class="day-table" id="wednesday">
           <tr>
             <td>
               <table class="task-table">
@@ -137,6 +194,25 @@
               </table>
             </td>
           </tr>
+          <tr th:each="task : ${tasksByDay.get('wednesday')}">
+            <td>
+              <table class="task-table">
+                <tr>
+                  <th class="task-head">Beschreibung</th>
+                  <th class="task-head">Zeit</th>
+                  <th class="task-head">Verbleibend</th>
+                </tr>
+                <tr>
+                  <td class="task-data" th:text="${task.getName()}">Task</td>
+                  <td class="task-data-time" th:text="${task.getTotalTime()}">2h</td>
+                </tr>
+                <tr>
+                  <td class="empty-field"></td>
+                  <td class="task-data-remaining">0h</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
           <tr>
             <td>
               <button type="button" class="add-button">+</button>
@@ -145,7 +221,7 @@
         </table>
       </td>
       <td class="overview-data">
-        <table class="day-table">
+        <table class="day-table" id="thursday">
           <tr>
             <td>
               <table class="task-table">
@@ -164,6 +240,25 @@
               </table>
             </td>
           </tr>
+          <tr th:each="task : ${tasksByDay.get('thursday')}">
+            <td>
+              <table class="task-table">
+                <tr>
+                  <th class="task-head">Beschreibung</th>
+                  <th class="task-head">Zeit</th>
+                  <th class="task-head">Verbleibend</th>
+                </tr>
+                <tr>
+                  <td class="task-data" th:text="${task.getName()}">Task</td>
+                  <td class="task-data-time" th:text="${task.getTotalTime()}">2h</td>
+                </tr>
+                <tr>
+                  <td class="empty-field"></td>
+                  <td class="task-data-remaining">0h</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
           <tr>
             <td>
               <button type="button" class="add-button">+</button>
@@ -172,7 +267,7 @@
         </table>
       </td>
       <td class="overview-data">
-        <table class="day-table">
+        <table class="day-table" id="friday">
           <tr>
             <td>
               <table class="task-table">
@@ -191,6 +286,25 @@
               </table>
             </td>
           </tr>
+          <tr th:each="task : ${tasksByDay.get('friday')}">
+            <td>
+              <table class="task-table">
+                <tr>
+                  <th class="task-head">Beschreibung</th>
+                  <th class="task-head">Zeit</th>
+                  <th class="task-head">Verbleibend</th>
+                </tr>
+                <tr>
+                  <td class="task-data" th:text="${task.getName()}">Task</td>
+                  <td class="task-data-time" th:text="${task.getTotalTime()}">2h</td>
+                </tr>
+                <tr>
+                  <td class="empty-field"></td>
+                  <td class="task-data-remaining">0h</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
           <tr>
             <td>
               <button type="button" class="add-button">+</button>
@@ -199,7 +313,7 @@
         </table>
       </td>
       <td class="overview-data">
-        <table class="day-table">
+        <table class="day-table" id="done">
           <tr>
             <td>
               <table class="task-table">
@@ -210,6 +324,25 @@
                 <tr>
                   <td class="task-data">Task 8</td>
                   <td class="task-data-time">2h</td>
+                </tr>
+                <tr>
+                  <td class="empty-field"></td>
+                  <td class="task-data-remaining">0h</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr th:each="task : ${tasksByDay.get('done')}">
+            <td>
+              <table class="task-table">
+                <tr>
+                  <th class="task-head">Beschreibung</th>
+                  <th class="task-head">Zeit</th>
+                  <th class="task-head">Verbleibend</th>
+                </tr>
+                <tr>
+                  <td class="task-data" th:text="${task.getName()}">Task</td>
+                  <td class="task-data-time" th:text="${task.getTotalTime()}">2h</td>
                 </tr>
                 <tr>
                   <td class="empty-field"></td>
