@@ -41,4 +41,12 @@ public class TaskServiceTest {
         Task task2 = service.createTask("Task 1", "Test Task zum testen","2h", LocalDate.of(2025, 3, 28));
         assertThat(service.getTasksByDay().get("friday")).isNotEmpty();
     }
+
+    @Test
+    @DisplayName("convertDay setzt Tag auf 'week' wenn es ein Sonntag ist")
+    void test_5() throws Exception {
+        TaskService service = new TaskService();
+        Task task = service.createTask("Task 1", "Test Task zum testen","2h", LocalDate.of(2025, 3, 30));
+        assertThat(task.getCompletionDay()).isEqualToIgnoringCase("week");
+    }
 }

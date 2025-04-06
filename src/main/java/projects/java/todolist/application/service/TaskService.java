@@ -47,6 +47,10 @@ public class TaskService {
     }
 
     private String convertDay(LocalDate completionDate) {
-        return completionDate.getDayOfWeek().name();
+        String day = completionDate.getDayOfWeek().name();
+        if (day.equalsIgnoreCase("sunday")) {
+            day = "week";
+        }
+        return day;
     }
 }
