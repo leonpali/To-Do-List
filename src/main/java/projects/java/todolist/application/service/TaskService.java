@@ -1,6 +1,7 @@
 package projects.java.todolist.application.service;
 
 import org.springframework.stereotype.Service;
+import projects.java.todolist.application.InvalidTaskException;
 import projects.java.todolist.domain.CompletionDate;
 import projects.java.todolist.domain.Task;
 import projects.java.todolist.domain.TaskTime;
@@ -17,6 +18,8 @@ public class TaskService {
     private List<Task> taskList = new ArrayList<>();
 
     public Task createTask(String name, String description, String totalTime, LocalDate completionDate) {
+        if (name == null || name.trim().isEmpty()) throw new InvalidTaskException("Name darf nicht leer sein");
+        if (!validateTime(totalTime)) throw new InvalidTaskException("Zeit muss im Format 'hh:mm' angegeben werden");
         Task task = new Task(name, totalTime, description, completionDate, convertDay(completionDate));
         taskList.add(task);
         return task;
@@ -52,5 +55,9 @@ public class TaskService {
             day = "week";
         }
         return day;
+    }
+
+    private boolean validateTime(String time) {
+        return time.matches("[1-9]+\\d*m") || time.matches("[1-9]+\\d*h\\s[1-9]+\\d*m") || time.matches("[1-9]+\\d*h");
     }
 }

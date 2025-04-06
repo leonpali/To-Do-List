@@ -46,6 +46,41 @@ public class OverviewControllerTest {
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(view().name("overview"))
                 .andExpect(model().attribute("tasksByDay", service.getTasksByDay()));
+    }
 
+    @Test
+    @DisplayName("Wenn Name leer ist wird InvalidTaskException geworfen")
+    void test_3() throws Exception {
+        mockMvc.perform(post("/overview")
+                        .param("taskName", "")
+                        .param("taskTime", "1h 30m")
+                        .param("taskDate", String.valueOf(LocalDate.now()))
+                        .param("taskDescription", "Code auf Github pushen"))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("Name darf nicht leer sein"));
+    }
+
+    @Test
+    @DisplayName("Wenn Zeit im falschen Format ist wird InvalidTaskException geworfen")
+    void test_4() throws Exception {
+        mockMvc.perform(post("/overview")
+                        .param("taskName", "Task 1")
+                        .param("taskTime", "AAA")
+                        .param("taskDate", String.valueOf(LocalDate.now()))
+                        .param("taskDescription", "Code auf Github pushen"))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("Zeit muss im Format 'hh:mm' angegeben werden"));
+    }
+
+    @Test
+    @DisplayName("Wenn Datum leer ist wird InvalidTaskException geworfen")
+    void test_5() throws Exception {
+        mockMvc.perform(post("/overview")
+                        .param("taskName", "Task 1")
+                        .param("taskTime", "1h 30m")
+                        .param("taskDate", "")
+                        .param("taskDescription", "Code auf Github pushen"))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("Datum darf nicht leer sein"));
     }
 }
