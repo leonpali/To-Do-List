@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <link rel="stylesheet" href="../static/css/details.css">
+</head>
+<body>
+<form action="overview" method="get">
+    <input class="return" type="submit" value="Zurück zur Übersicht">
+</form>
+
+<h1 class="task-name" th:text="${taskName}">Task Name</h1>
+<p class="task-description" th:text="${taskDescription}">Task Description</p>
+
+<div class="date">
+    <h2 class="label-date">Fällig am:</h2>
+    <p class="task-date" th:text="${taskDate}">01.01.2025</p>
+</div>
+
+<div>
+<div class="time">
+    <div class="time-header">
+    <h2 class="label-time">Geschätzter Zeitaufwand:</h2>
+    <p class="task-time" th:text="${taskTime}">2h</p>
+    </div>
+    <div class="used-header">
+        <h2 class="label-used">Aufgewandte Zeit:</h2>
+        <p class="task-used" th:text="${timeUsed}">0h</p>
+    </div>
+    <form method="post" id="time-form">
+        <label for="usedTime">Zeit protokollieren:</label><br>
+        <input type="text" id="usedTime" name="usedTime" placeholder="1h 30m"><br>
+        <input type="submit" value="Fertig" id="use-time">
+    </form>
+</div>
+    <form method="post" id="done-form">
+        <input type="submit" class="done" value="Aufgabe abschließen">
+    </form>
+</div>
+</body>
+</html>

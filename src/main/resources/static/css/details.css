@@ -1,0 +1,84 @@
+html,body {
+    font-family: Arial;
+}
+
+.task-description {
+    width: 80%;
+}
+
+.date {
+    width: 20%;
+    right: 50px;
+    top: 0px;
+    position: absolute;
+}
+
+.time {
+    width: 20%;
+    right: 50px;
+    position: absolute;
+}
+
+.time-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.label-time {
+    font-size: medium;
+    font-weight: normal;
+}
+
+.task-time {
+    margin: 0;
+    position: static;
+}
+
+.used-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.label-used {
+    font-size: medium;
+    font-weight: normal;
+}
+.task-used {
+    margin: 0;
+    position: static;
+}
+
+
+#use-time {
+    width: 200px;
+    height: 30px;
+    background-color: #1c3de7;
+    border-color: #deeaf2;
+    border-width: 1px;
+    color: white;
+}
+
+.return {
+    width: 200px;
+    height: 30px;
+    background-color: #1c3de7;
+    border-color: #deeaf2;
+    border-width: 1px;
+    color: white;
+}
+
+.done {
+    width: 200px;
+    height: 30px;
+    background-color: #dd4e20;
+    border-color: #deeaf2;
+    border-width: 1px;
+    color: white;
+}
+
+#done-form {
+    position: relative;
+    top: 160px;
+}
