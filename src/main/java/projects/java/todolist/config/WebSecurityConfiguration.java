@@ -13,7 +13,7 @@ public class WebSecurityConfiguration {
     @Bean
     public SecurityFilterChain configure(HttpSecurity chainBuilder) throws Exception {
         chainBuilder.authorizeHttpRequests(
-                c -> c.requestMatchers("/overview", "/error", "/css/**", "/img/**", "/add-task.html","/favicon.ico").permitAll()
+                c -> c.requestMatchers("/overview", "/error", "/css/**", "/img/**", "/add-task.html","/favicon.ico", "/details/*").permitAll()
                         .anyRequest().authenticated()
         ).csrf(AbstractHttpConfigurer::disable)
                 .headers(
