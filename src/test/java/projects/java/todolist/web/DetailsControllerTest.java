@@ -36,7 +36,7 @@ public class DetailsControllerTest {
         t.setId(1);
 
         when(s.getTaskById(1)).thenReturn(t);
-        
+
         mockMvc.perform(get("/details/1"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(view().name("details"))
@@ -69,8 +69,28 @@ public class DetailsControllerTest {
     @Test
     @DisplayName("POST Mapping für Zeit protokollieren klappt")
     void test_4() throws Exception {
-        mockMvc.perform(post("/details/1/useTime"))
+        Task t = new Task( "1", "2h", "test", LocalDate.now(), "monday");
+        t.setId(1);
+
+        when(s.getTaskById(1)).thenReturn(t);
+        mockMvc.perform(post("/details/1/useTime")
+                        .param("usedTime","0h"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(view().name("details"));
+    }
+
+    @Test
+    @DisplayName("POST useTime ändert die timeUsed")
+    void test_5() throws Exception {
+        Task t = new Task( "1", "2h", "test", LocalDate.now(), "monday");
+        t.setId(1);
+
+        when(s.getTaskById(1)).thenReturn(t);
+        mockMvc.perform(post("/details/1/useTime")
+                        .param("usedTime", "1h"))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(view().name("details"));
+
+        verify(s).useTime(1,"1h");
     }
 }

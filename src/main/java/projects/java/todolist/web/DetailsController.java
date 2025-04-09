@@ -2,10 +2,7 @@ package projects.java.todolist.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import projects.java.todolist.application.service.TaskService;
 import projects.java.todolist.domain.Task;
 
@@ -38,7 +35,16 @@ public class DetailsController {
     }
 
     @PostMapping("/{id}/useTime")
-    public String useTime(@PathVariable int id) {
+    public String useTime(@PathVariable int id,
+                          @RequestParam String usedTime,
+                          Model model) {
+        service.useTime(id, usedTime);
+        Task t = service.getTaskById(id);
+        model.addAttribute("taskName", t.getName());
+        model.addAttribute("taskDescription", t.getDescription());
+        model.addAttribute("taskDate", t.getDate());
+        model.addAttribute("taskTime", t.getTotalTime());
+        model.addAttribute("timeUsed", t.getNeededTime());
         return "details";
     }
 }
