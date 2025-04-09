@@ -17,8 +17,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @Import({WebSecurityConfiguration.class, DetailsController.class, TaskService.class})
 @WebMvcTest(DetailsController.class)
@@ -33,9 +32,15 @@ public class DetailsControllerTest {
     @Test
     @DisplayName("Details sind unter /details/{id} verfügbar")
     void test_1() throws Exception {
+        Task t = new Task( "1", "2h", "test", LocalDate.now(), "monday");
+        t.setId(1);
+
+        when(s.getTaskById(1)).thenReturn(t);
+        
         mockMvc.perform(get("/details/1"))
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(view().name("details"));
+                .andExpect(view().name("details"))
+                .andExpect(model().attribute("taskName", "1"));
     }
 
     @Test
