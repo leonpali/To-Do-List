@@ -28,7 +28,7 @@
         <h2 class="label-used">Aufgewandte Zeit:</h2>
         <p class="task-used" th:text="${timeUsed}">0h</p>
     </div>
-    <form method="post" id="time-form">
+    <form method="post" id="time-form" th:action="@{/details/{id}/useTime}">
         <label for="usedTime">Zeit protokollieren:</label><br>
         <input type="text" id="usedTime" name="usedTime" placeholder="1h 30m"><br>
         <input type="submit" value="Fertig" id="use-time">

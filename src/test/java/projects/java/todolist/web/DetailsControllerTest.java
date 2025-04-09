@@ -60,4 +60,12 @@ public class DetailsControllerTest {
 
         verify(s).finishTask(1);
     }
+
+    @Test
+    @DisplayName("POST Mapping für Zeit protokollieren klappt")
+    void test_4() throws Exception {
+        mockMvc.perform(post("/details/1/useTime"))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(view().name("details"));
+    }
 }

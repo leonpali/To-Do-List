@@ -27,4 +27,9 @@ public class DetailsController {
         service.finishTask(id);
         return "redirect:/overview";
     }
+
+    @PostMapping("/{id}/useTime")
+    public String useTime(@PathVariable int id) {
+        return "details";
+    }
 }
