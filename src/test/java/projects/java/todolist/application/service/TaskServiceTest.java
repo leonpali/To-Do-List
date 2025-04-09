@@ -49,4 +49,15 @@ public class TaskServiceTest {
         Task task = service.createTask("Task 1", "Test Task zum testen","2h", LocalDate.of(2025, 3, 30));
         assertThat(task.getCompletionDay()).isEqualToIgnoringCase("week");
     }
+
+    @Test
+    @DisplayName("getTaskById klappt")
+    void test_6() throws Exception {
+        TaskService service = new TaskService();
+        Task t = service.createTask("Task 1", "TEST", "2h", LocalDate.now());
+        t.setId(1);
+        Task z = service.createTask("Task 2", "TEST", "2h", LocalDate.now());
+        z.setId(2);
+        assertThat(service.getTaskById(1)).isEqualTo(t);
+    }
 }
