@@ -80,4 +80,14 @@ public class TaskServiceTest {
         service.useTime(1, "1h");
         assertThat(service.getTaskById(1).getNeededTime()).isEqualTo("1h");
     }
+
+    @Test
+    @DisplayName("Zeit wird richtig umgerechnet bei mehr als 60 Minuten")
+    void test_9() throws Exception {
+        TaskService service = new TaskService();
+        Task t = service.createTask("Task 1", "TEST", "2h", LocalDate.now());
+        t.setId(1);
+        service.useTime(1, "80m");
+        assertThat(service.getTaskById(1).getNeededTime()).isEqualTo("1h 20m");
+    }
 }

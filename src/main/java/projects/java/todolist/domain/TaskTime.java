@@ -39,8 +39,16 @@ public class TaskTime {
         } else if (neededTime.contains("h")){
             this.hours += Integer.parseInt(neededTime.split("h")[0]);
             this.minutes += Integer.parseInt(neededTime.split("h")[1].split("m")[0]);
+            if (this.minutes > 59) {
+                this.hours += this.minutes / 60;
+                this.minutes = this.minutes % 60;
+            }
         } else {
             this.minutes += Integer.parseInt(neededTime.split("m")[0]);
+            if (this.minutes > 59) {
+                this.hours += this.minutes / 60;
+                this.minutes = this.minutes % 60;
+            }
         }
 
         if (this.minutes == 0) {
