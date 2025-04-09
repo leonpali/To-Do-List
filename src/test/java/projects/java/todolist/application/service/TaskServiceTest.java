@@ -70,4 +70,14 @@ public class TaskServiceTest {
         service.finishTask(1);
         assertThat(service.getTaskById(1).getCompletionDay()).isEqualTo("done");
     }
+
+    @Test
+    @DisplayName("useTask ändert timeNeeded")
+    void test_8() throws Exception {
+        TaskService service = new TaskService();
+        Task t = service.createTask("Task 1", "TEST", "2h", LocalDate.now());
+        t.setId(1);
+        service.useTime(1, "1h");
+        assertThat(service.getTaskById(1).getNeededTime()).isEqualTo("1h");
+    }
 }

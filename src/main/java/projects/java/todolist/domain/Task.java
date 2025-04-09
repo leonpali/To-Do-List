@@ -89,8 +89,8 @@ public class Task {
         return timeValues.getNeededTime();
     }
 
-    public void setNeededTime(String time) {
-        timeValues.setNeededTime(time);
+    public void addNeededTime(String time) {
+        timeValues.addNeededTime(time);
     }
 
     public void finish() {
