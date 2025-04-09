@@ -34,7 +34,7 @@
         <input type="submit" value="Fertig" id="use-time">
     </form>
 </div>
-    <form method="post" id="done-form">
+    <form method="post" id="done-form" th:action="@{/details/{id}/done}">
         <input type="submit" class="done" value="Aufgabe abschließen">
     </form>
 </div>

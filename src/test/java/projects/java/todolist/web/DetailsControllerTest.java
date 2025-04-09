@@ -9,6 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import projects.java.todolist.config.WebSecurityConfiguration;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -25,5 +26,13 @@ public class DetailsControllerTest {
         mockMvc.perform(get("/details/1"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(view().name("details"));
+    }
+
+    @Test
+    @DisplayName("Task kann mit Abschließen Button auf done gesetzt werden")
+    void test_2() throws Exception {
+        mockMvc.perform(post("/details/1/done"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/overview"));
     }
 }
