@@ -60,4 +60,14 @@ public class TaskServiceTest {
         z.setId(2);
         assertThat(service.getTaskById(1)).isEqualTo(t);
     }
+
+    @Test
+    @DisplayName("finishTask setzt Tag auf done")
+    void test_7() throws Exception {
+        TaskService service = new TaskService();
+        Task t = service.createTask("Task 1", "TEST", "2h", LocalDate.now());
+        t.setId(1);
+        service.finishTask(1);
+        assertThat(service.getTaskById(1).getCompletionDay()).isEqualTo("done");
+    }
 }
