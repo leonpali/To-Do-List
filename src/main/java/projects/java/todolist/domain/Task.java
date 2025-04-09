@@ -92,4 +92,8 @@ public class Task {
     public void setNeededTime(String time) {
         timeValues.setNeededTime(time);
     }
+
+    public void finish() {
+        completionDate.setCompletionDay("done");
+    }
 }

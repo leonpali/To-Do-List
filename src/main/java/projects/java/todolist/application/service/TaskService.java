@@ -53,6 +53,10 @@ public class TaskService {
         return taskList.stream().filter(a -> a.getId() == id).findFirst().get();
     }
 
+    public void finishTask(int id) {
+        taskList.stream().filter(a -> a.getId() == id).findFirst().get().finish();
+    }
+
     private String convertDay(LocalDate completionDate) {
         String day = completionDate.getDayOfWeek().name();
         if (day.equalsIgnoreCase("sunday")) {
